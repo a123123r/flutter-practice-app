@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:developer';
 
@@ -43,8 +42,9 @@ class _MyHomePageState extends State<MyHomePage> {
         );
         universityList.add(uniModel);
 
-         punjabList = universityList.where((element) =>
-            element.provinceName.toString() == "Panjab"  ).toList();
+        punjabList = universityList
+            .where((element) => element.provinceName.toString() == "Panjab")
+            .toList();
       }
       setState(() {
         loading = false;
@@ -71,15 +71,16 @@ class _MyHomePageState extends State<MyHomePage> {
 
       pref.setString('token', "null");
       pref.setBool('login', false);
-      Navigator.of(context).pushAndRemoveUntil((MaterialPageRoute(builder: (context) => Login())), (route) => false);
+      Navigator.of(context).pushAndRemoveUntil(
+          (MaterialPageRoute(builder: (context) => Login())), (route) => false);
     } catch (e) {
       print("Catch Error________________");
       print(e.toString());
     }
   }
-  
+
   List<univeristyModel> filterList = [];
-TextEditingController controller = TextEditingController();
+  TextEditingController controller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,46 +94,51 @@ TextEditingController controller = TextEditingController();
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-
-              ElevatedButton(onPressed: (){
-                getData();
-              }, child: Text("Get Data")),
-
+              Text("Home Page"),
+              ElevatedButton(
+                  onPressed: () {
+                    getData();
+                  },
+                  child: Text("Get Data from api")),
               TextField(
                 controller: controller,
-                onChanged: (e){
-              setState(() {
-                filterList = universityList.where((univeristyModel element) =>
-                    element.provinceName.toString().toUpperCase()
-                        .contains(controller.text.toString().toUpperCase())
-                    ||
-                    element.universityName.toString().toUpperCase()
-                    .contains(controller.text.toString().toUpperCase())
-                
-                ).toList() ;
-              });
-                  
+                onChanged: (e) {
+                  setState(() {
+                    filterList = universityList
+                        .where((univeristyModel element) =>
+                            element.provinceName
+                                .toString()
+                                .toUpperCase()
+                                .contains(
+                                    controller.text.toString().toUpperCase()) ||
+                            element.universityName
+                                .toString()
+                                .toUpperCase()
+                                .contains(
+                                    controller.text.toString().toUpperCase()))
+                        .toList();
+                  });
                 },
               ),
               loading == true
                   ? Text("Loading...")
-                  : 
-              filterList.length >0 ?
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount:  filterList.length,
-                itemBuilder: (context, i) {
-                  return Text("${filterList[i].provinceName.toString()} :   ${filterList[i].universityName.toString()}");
-                },
-              ):
-              
-              ListView.builder(
-                shrinkWrap: true,
-                itemCount: punjabList.length,
-                itemBuilder: (context, i) {
-                  return Text("${punjabList[i].provinceName.toString()} :   ${punjabList[i].universityName.toString()}");
-                },
-              ),
+                  : filterList.length > 0
+                      ? ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: filterList.length,
+                          itemBuilder: (context, i) {
+                            return Text(
+                                "${filterList[i].provinceName.toString()} :   ${filterList[i].universityName.toString()}");
+                          },
+                        )
+                      : ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: punjabList.length,
+                          itemBuilder: (context, i) {
+                            return Text(
+                                "${punjabList[i].provinceName.toString()} :   ${punjabList[i].universityName.toString()}");
+                          },
+                        ),
             ],
           ),
         ),
@@ -148,4 +154,3 @@ TextEditingController controller = TextEditingController();
     );
   }
 }
-
