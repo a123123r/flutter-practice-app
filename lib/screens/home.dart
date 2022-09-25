@@ -95,6 +95,8 @@ class _MyHomePageState extends State<MyHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Text("Home Page"),
+              Text("adsfasdfasf"),
+              Text("dddddddddddddddddddddddddddddd"),
               ElevatedButton(
                   onPressed: () {
                     getData();

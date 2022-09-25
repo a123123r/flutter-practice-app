@@ -1,5 +1,3 @@
-
-
 //Login Screen
 import 'dart:convert';
 import 'dart:developer';
@@ -50,12 +48,11 @@ class _LoginState extends State<Login> {
     }
   }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Login Page"),
+        title: Text("Login Page here"),
       ),
       body: Center(
         child: ElevatedButton(
@@ -67,4 +64,3 @@ class _LoginState extends State<Login> {
     );
   }
 }
-
