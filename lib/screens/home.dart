@@ -96,7 +96,7 @@ class _MyHomePageState extends State<MyHomePage> {
             children: <Widget>[
               Text("Home Page"),
               Text("adsfasdfasf"),
-              Text("dddddddddddddddddddddddddddddd"),
+              Text("dddddddddddddddddddddddddddddd asdfasdfsd"),
               ElevatedButton(
                   onPressed: () {
                     getData();

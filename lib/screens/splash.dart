@@ -31,7 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
             .push(MaterialPageRoute(builder: (context) => Login()));
       } else {
         Navigator.of(context)
-            .push(MaterialPageRoute(builder: (context) => MyHomePage(title: "title")));
+            .push(MaterialPageRoute(builder: (context) => MyHomePage(title: "title asdsfasdf")));
       }
     });
   }
